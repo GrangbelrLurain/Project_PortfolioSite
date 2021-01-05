@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lurain</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
   <header id="opening">
@@ -11,156 +13,163 @@
       <h1 class="title">김규연의 포트폴리오 웹 사이트입니다.</h1>
     </div>
     <div class="intro">
-      <img src="" alt="" class="scroll">
+      <img src="assets/img/mouse.svg" alt="" class="scroll">
+      <p>Scroll Mouse</p>
     </div>
   </header>
-  <aside id="aside">
-    <button class="toggleBtn"></button>
-    <ul class="main">
-      <li><a href="?profile&1">PROFILE</a>
-        <ul class="sub">
-          <li><a href="?profile&1">소개</a></li>
-          <li><a href="?profile&2">기술</a></li>
-          <li><a href="?profile&3">Q&A</a></li>
-        </ul>
-      </li>
-      <li><a href="?portfolio&1">PORTFOLIO</a>
-        <ul class="sub">
-          <li><a href="?portfolio&1">프로젝트</a></li>
-          <li><a href="?portfolio&2">클론코딩</a></li>
-        </ul>
-      </li>
-      <li><a href="?contact">CONTACT</a></li>
-    </ul>
-  </aside>
-  <main id="viewport">
-    <section id="profile01">
-      <h2 class="ir_su">소개</h2>
-      <article class="profile">
-        <p class="sky">LURAIN</p>
-        <div class="profileImg">
-          <img src="" alt="">
-        </div>
-        <p class="name">Kim Kyuyeon</p>
-        <p class="age">FROM.1994</p>
-      </article>
-    </section>
-    <section id="profile02">
-      <h2 class="ir_su">기술</h2>
-      <article class="skill">
-        <dl>
-          <img src="assets/img/html5.svg" alt="html5">
-          <dt>HTML5</dt>
-          <dd>HTML4.x 표준태그 사용</dd>
-          <dd>HTML5 신규태그 사용</dd>
-          <dd>태그 사용 시 W3C/MDN 웹 표준 확인</dd>
-        </dl>
-        <dl>
-          <img src="assets/img/css3.png" alt="css3">
-          <dt>CSS3</dt>
-          <dd>CSS3 레이아웃 작성</dd>
-          <dd>SCSS를 사용한 CSS 모듈화</dd>
-          <dd>웹브라우저 버전별 CSS 사용성 확인</dd>
-        </dl>
-        <dl>
-          <img src="assets/img/javascript.png" alt="javascript ES6">
-          <dt>ES6 Javascript</dt>
-          <dd>웹API를 활용한 DOM제어</dd>
-          <dd>ES6 문법 및 Vanila Js 사용</dd>
-          <dd>CDN/NPM 라이브러리 사용</dd>
-        </dl>
-        <dl>
-          <img src="assets/img/nodejs.png" alt="node.js">
-          <dt>Node.js</dt>
-          <dd>Node.JS API 활용한 CRUD시스템 구현(초급)</dd>
-        </dl>
-        <dl>
-          <img src="assets/img/GitHub-logo.png" alt="github">
-          <dt>Github</dt>
-          <dd>VSCode 연동 Git 버전관리 시스템 활용</dd>
-        </dl>
-      </article>
-    </section>
-    <section id="profile03">
-      <h2 class="ir_su">Q&A</h2>
-      <article class="QnA">
-        <p class="q">Q. 어떤 개발자가 되고싶나요?</p>
-        <p class="a">A. 만들고 싶은 것을 만들어 줄 수 있는 개발자가 되고싶습니다.</p>
-      </article>
-    </section>
-    <section id="portfolio01">
-      <h2 class="ir_su">포트폴리오</h2>
-      <div class="viewport">
-        <article class="project_list">
-          <div class="item">
-            <img src="assets/img/logo/choco.png" alt="douce&choco rocher">
-            <span class="title">Douce&Choco Rocher</span>
-          </div>
-          <div class="item">
-            <img src="assets/img/logo/iris.png" alt="Hotel Grand Iris">
-            <span class="title">Grand Iris Hotel</span>
-          </div>
-          <div class="item">
-            <img src="assets/img/logo/note.svg" alt="Project_Diary">
-            <span class="title">Project_Diary</span>
-          </div>
-          <div class="item">
-            <img src="assets/img/logo/cat.png" alt="Cat Supporters">
-            <span class="title">Cat Supporters</span>
-          </div>
-        </article>
-        <article class="project_explain">
-          <div class="item">
-            <a href="#">스토리보드</a>
-            <a href="#">웹사이트</a>
-            <a href="#">소개</a>
-          </div>
-          <div class="item">
-            <a href="#">스토리보드</a>
-            <a href="#">웹사이트</a>
-            <a href="#">소개</a>
-          </div>
-          <div class="item">
-            <a href="#">스토리보드</a>
-            <a href="#">웹사이트</a>
-            <a href="#">소개</a>
-          </div>
-          <div class="item">
-            <a href="#">스토리보드</a>
-            <a href="#">웹사이트</a>
-            <a href="#">소개</a>
-          </div>
-        </article>
+  <div id="viewport">
+    <aside id="aside">
+      <div class="scroll">
+        <div class="bar"></div>
       </div>
-    </section>
-    <section id="portfolio02">
-      <h2 class="ir_su">클론코딩</h2>
-      <article class="clone_coding">
-        <h3>Clone Coding</h3>
-        <ul class="list">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </article>
-      <article class="re_design">
-        <h3>Redesign</h3>
-        <ul class="list">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </article>
-    </section>
-    <section id="contact">
-      <article class="circle">
-        <img src="assets/img/messeage.svg" alt="mail Icon">
-        <p class="mail">Email : lurain003@gmail.com</p>
-        <p class="phone">Phone : 010-8211-8359</p>
-      </article>
-    </section>
-  </main>
+      <button class="toggleBtn"></button>
+      <ul class="main">
+        <li><a href="?profile&1">PROFILE</a>
+          <ul class="sub">
+            <li><a href="?profile&1">소개</a></li>
+            <li><a href="?profile&2">기술</a></li>
+            <li><a href="?profile&3">Q&A</a></li>
+          </ul>
+        </li>
+        <li><a href="?portfolio&1">PORTFOLIO</a>
+          <ul class="sub">
+            <li><a href="?portfolio&1">프로젝트</a></li>
+            <li><a href="?portfolio&2">클론코딩</a></li>
+          </ul>
+        </li>
+        <li><a href="?contact">CONTACT</a></li>
+      </ul>
+    </aside>
+    <main id="contents">
+      <section id="profile01">
+        <h2 class="ir_su">소개</h2>
+        <article class="profile">
+          <p class="nick sky">LURAIN</p>
+          <div class="profileImg">
+            <img src="assets/img/profile.png" alt="profileImg">
+          </div>
+          <p class="name">Kim Kyuyeon</p>
+          <p class="age">FROM.1994</p>
+        </article>
+      </section>
+      <section id="profile02">
+        <h2 class="ir_su">기술</h2>
+        <article class="skill">
+          <dl class="html">
+            <img src="assets/img/html5.svg" alt="html5">
+            <dt>HTML5</dt>
+            <dd>HTML4.x 표준태그 사용</dd>
+            <dd>HTML5 신규태그 사용</dd>
+            <dd>태그 사용 시 W3C/MDN 웹 표준 확인</dd>
+          </dl>
+          <dl class="css">
+            <img src="assets/img/css3.png" alt="css3">
+            <dt>CSS3</dt>
+            <dd>CSS3 레이아웃 작성</dd>
+            <dd>SCSS를 사용한 CSS 모듈화</dd>
+            <dd>웹브라우저 버전별 CSS 사용성 확인</dd>
+          </dl>
+          <dl class="js active">
+            <img src="assets/img/javascript.png" alt="javascript ES6">
+            <dt>ES6 Javascript</dt>
+            <dd>웹API를 활용한 DOM제어</dd>
+            <dd>ES6 문법 및 Vanila Js 사용</dd>
+            <dd>CDN/NPM 라이브러리 사용</dd>
+          </dl>
+          <dl class="node">
+            <img src="assets/img/nodejs.png" alt="node.js">
+            <dt>Node.js</dt>
+            <dd>Node.JS API 활용한 CRUD시스템 구현(초급)</dd>
+          </dl>
+          <dl class="github">
+            <img src="assets/img/GitHub-logo.png" alt="github">
+            <dt>Github</dt>
+            <dd>VSCode 연동 Git 버전관리 시스템 활용</dd>
+          </dl>
+        </article>
+      </section>
+      <section id="profile03">
+        <h2 class="ir_su">Q&A</h2>
+        <article class="QnA">
+          <p class="q">Q. 어떤 개발자가 되고싶나요?</p>
+          <p class="a">A. 만들고 싶은 것을 만들어 줄 수 있는 개발자가 되고싶습니다.</p>
+        </article>
+      </section>
+      <section id="portfolio01">
+        <h2 class="ir_su">포트폴리오</h2>
+        <div class="viewport">
+          <article class="project_list">
+            <div class="item">
+              <img src="assets/img/logo/choco.png" alt="douce&choco rocher">
+              <span class="title">Douce&Choco Rocher</span>
+            </div>
+            <div class="item">
+              <img src="assets/img/logo/iris.png" alt="Hotel Grand Iris">
+              <span class="title">Grand Iris Hotel</span>
+            </div>
+            <div class="item">
+              <img src="assets/img/logo/note.svg" alt="Project_Diary">
+              <span class="title">Project_Diary</span>
+            </div>
+            <div class="item">
+              <img src="assets/img/logo/cat.png" alt="Cat Supporters">
+              <span class="title">Cat Supporters</span>
+            </div>
+          </article>
+          <article class="project_explain">
+            <div class="item">
+              <a href="#">스토리보드</a>
+              <a href="#">웹사이트</a>
+              <a href="#">소개</a>
+            </div>
+            <div class="item">
+              <a href="#">스토리보드</a>
+              <a href="#">웹사이트</a>
+              <a href="#">소개</a>
+            </div>
+            <div class="item">
+              <a href="#">스토리보드</a>
+              <a href="#">웹사이트</a>
+              <a href="#">소개</a>
+            </div>
+            <div class="item">
+              <a href="#">스토리보드</a>
+              <a href="#">웹사이트</a>
+              <a href="#">소개</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section id="portfolio02">
+        <h2 class="ir_su">클론코딩</h2>
+        <article class="clone_coding">
+          <h3>Clone Coding</h3>
+          <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+        <article class="re_design">
+          <h3>Redesign</h3>
+          <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+      </section>
+      <section id="contact">
+        <article class="circle">
+          <img src="assets/img/messeage.svg" alt="mail Icon">
+          <p class="mail">Email : lurain003@gmail.com</p>
+          <p class="phone">Phone : 010-8211-8359</p>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="assets/js/indexEvent.js"></script>
 </body>
 </html>
