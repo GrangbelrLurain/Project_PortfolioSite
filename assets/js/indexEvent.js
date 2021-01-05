@@ -8,7 +8,7 @@
     contents.classList.toggle('close');
   })
 
- //NAV EVNET
+ // NAV EVNET
   const mainNav = document.querySelectorAll('#aside .main > li > a');
   const allNav = document.querySelectorAll('#aside .main .sub li a')
   let href = null;
@@ -21,8 +21,9 @@
   })
 
   mainNav.forEach((elem) => {
-    elem.addEventListener('click', () => {
+    elem.addEventListener('click', (event) => {
       event.preventDefault();
+      href = elem.getAttribute('href')
       navToggle(elem);
     })
   })
@@ -90,7 +91,6 @@
 
   window.addEventListener('wheel', (event) => {
     directionY = event.deltaY;
-    console.log(nowContents)
     if(scrollSwitch === true){
       scrollEventWheel();
       scrollSwitch = false;
@@ -129,6 +129,7 @@
       }, scrollResetTime);
     }
   })
+
   const scrollEventWheel = () => {
     if(directionY > 0 && nowContents < contentsList.length - 1){
       nowContents++;
@@ -142,6 +143,7 @@
       navUpdate();
     }
   }
+
   const scrollEventTouch = () => {
     if(directionY > window.innerHeight/4 && nowContents < contentsList.length - 1){
       nowContents++
@@ -192,5 +194,96 @@
       })
       mainNav[mainNav.length-1].parentElement.classList.remove('active');
     }
+  }
+}
+
+{ // SECTION PROFILE 02 EVENT
+  const skillList = document.querySelectorAll('#profile02 .skill dl');
+  skillList.forEach((elem) => {
+    elem.addEventListener('mouseover', () => {
+      skillList.forEach((allElem) => {
+        if(allElem != elem){
+          allElem.classList.remove('active');
+        } else {
+          elem.classList.add('active');
+        }
+      })
+    })
+  })
+}
+
+{ // SECTION PROFILE 03 EVENT
+  const question = document.querySelector('#profile03 .QnA .q');
+  const answer = document.querySelector('#profile03 .QnA .a');
+  const timer = document.querySelector('#profile03 .QnA .timer');
+  const percent = document.querySelector('#profile03 .QnA .timer .percent');
+  const intervalTime = 8000 // mili seconds 단위
+  const QnAList = [
+    {
+      Q : '어떤 개발자가 되고 싶나요?',
+      A : '만들고 싶은 것을 만들어 줄 수 있는 개발자가 되고싶습니다.'
+    },
+    {
+      Q : '왜 개발자가 되려고 하나요?',
+      A : '디자인과 영상을 하며 문화를 만드는 것의 즐거움을 알았습니다.<br>현재의 웹, 프론트엔드는 문화를 만들어감에서 최고라고 생각하고 있습니다.<br>그래서 프론트엔드 개발을 하고싶습니다.'
+    },
+    {
+      Q : '왜 디자인, 영상이 아닌 개발을 하려고 하나요?',
+      A : '디자인과 영상은 정말 중요합니다.<br>그것들에 생기를 주는 일이 개발이라고 생각하기 때문에 개발을 하려고 합니다.'
+    }
+  ]
+
+  question.style.animation = `QnAOpacity ${intervalTime}ms infinite`
+  answer.style.animation = `QnAOpacity ${intervalTime}ms infinite`
+  timer.style.animation = `QnAOpacity ${intervalTime}ms infinite`
+  percent.style.animation = `QnAtimer ${intervalTime}ms infinite`
+  let intervalNow = 0
+  setInterval(() => {
+    if(intervalNow < QnAList.length - 1){
+      intervalNow ++
+    } else {
+      intervalNow = 0;
+    }
+
+    question.innerHTML = `Q. ${QnAList[intervalNow].Q}`
+    answer.innerHTML = `A. ${QnAList[intervalNow].A}`
+
+
+  }, intervalTime)
+}
+
+{ // SECTION PORTFOLIO
+  const viewport = document.querySelector('#portfolio01 .viewport');
+  const projectList = viewport.querySelector('.project_list');
+  const projectExplain = document.querySelector('#portfolio01 .viewport .project_explain');
+  const listItems = projectList.querySelectorAll('.item');
+  const explainItems = projectExplain.querySelectorAll('.item');
+
+  let nowProject = 0;
+  let directY = 0;
+
+  viewport.addEventListener('wheel', (event) => {
+    event.stopPropagation();
+    directY = event.deltaY;
+    projectActive();
+  }, true);
+
+  const projectActive = () => {
+    if(directY > 0 && nowProject < listItems.length-1){
+      nowProject++
+    } else if (directY < 0 && nowProject > 0){
+      nowProject--
+    }
+    listItems.forEach((elem, index) => {
+      elem.style.transform = `translateY(${-nowProject*projectList.clientHeight}px)`
+      if(index == nowProject){
+        elem.classList.add('active');
+      } else {
+        elem.classList.remove('active');
+      }
+    })
+    explainItems.forEach((elem) => {
+      elem.style.transform = `translateY(${-nowProject*projectList.clientHeight}px)`
+    })
   }
 }
