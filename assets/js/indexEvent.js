@@ -10,7 +10,7 @@
 
  //NAV EVNET
   const mainNav = document.querySelectorAll('#aside .main > li > a');
-  const allNav = document.querySelectorAll('#aside .main li a')
+  const allNav = document.querySelectorAll('#aside .main .sub li a')
   let href = null;
   allNav.forEach((elem) => {
     elem.addEventListener('click', (event) => {
@@ -22,6 +22,7 @@
 
   mainNav.forEach((elem) => {
     elem.addEventListener('click', () => {
+      event.preventDefault();
       navToggle(elem);
     })
   })
@@ -89,6 +90,7 @@
 
   window.addEventListener('wheel', (event) => {
     directionY = event.deltaY;
+    console.log(nowContents)
     if(scrollSwitch === true){
       scrollEventWheel();
       scrollSwitch = false;
@@ -129,42 +131,37 @@
   })
   const scrollEventWheel = () => {
     if(directionY > 0 && nowContents < contentsList.length - 1){
-      scrollDown();
       nowContents++;
+      scrollDown();
       scrollBarUpdate();
+      navUpdate();
     } else if (directionY < 0 && nowContents > 0){
-      scrollUp();
       nowContents--;
+      scrollUp();
       scrollBarUpdate();
+      navUpdate();
     }
   }
   const scrollEventTouch = () => {
     if(directionY > window.innerHeight/4 && nowContents < contentsList.length - 1){
-      scrollDown();
       nowContents++
+      scrollDown();
       scrollBarUpdate();
+      navUpdate();
     } else if (directionY < -window.innerHeight/4 && nowContents > 0){
-      scrollUp();
       nowContents--
+      scrollUp();
       scrollBarUpdate();
+      navUpdate();
     }
   }
 
-  const transformGet = () => {
-    const lastTransform = contents.style.transform;
-    const cutF = lastTransform.indexOf('(') + 1;
-    const cutL = lastTransform.indexOf('vh');
-    const lastTransitionY = Number(lastTransform.substring(cutF,cutL));
-
-    return lastTransitionY;
-  }
-
   const scrollDown = () => {
-    contents.style.transform = `translateY(${transformGet() - 100}vh)`
+    contents.style.transform = `translateY(${-nowContents*100}vh)`
   }
   
   const scrollUp = () => {
-    contents.style.transform = `translateY(${transformGet() + 100}vh)`
+    contents.style.transform = `translateY(${-nowContents*100}vh)`
   }
 
   // scroll Bar Update
@@ -172,5 +169,28 @@
 
   const scrollBarUpdate = () => {
     scrollBar.style.height = `${(nowContents/(contentsList.length-1))*100}vh`
+  }
+
+  // nav Update
+  const navUpdate = () => {
+    allNav.forEach((elem) => elem.classList.remove('active'))
+    const nowNav = allNav[nowContents];
+    if(nowNav === undefined){
+      mainNav.forEach((elem) => {elem.parentElement.classList.remove('active')})
+      mainNav[mainNav.length-1].parentElement.classList.add('active');
+    } else {
+      nowNav.classList.add('active');
+      const nowActive = nowNav.parentElement.parentElement.parentElement;
+
+      mainNav.forEach((mainElem) => {
+        const allMain = mainElem.parentElement
+        if(allMain != nowActive){
+          allMain.classList.remove('active');
+        } else {
+          nowActive.classList.add('active');
+        }
+      })
+      mainNav[mainNav.length-1].parentElement.classList.remove('active');
+    }
   }
 }

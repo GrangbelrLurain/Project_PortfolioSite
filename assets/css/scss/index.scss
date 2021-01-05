@@ -165,7 +165,8 @@
 }
 
 #profile02 {
-  padding-left: 300px;
+  display: flex;
+  justify-content: center;
   .skill {
     height: 100%;
     display: flex;
