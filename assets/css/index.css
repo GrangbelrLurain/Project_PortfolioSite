@@ -216,7 +216,7 @@ a {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 300px;
+  top: 20%;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -303,14 +303,50 @@ a {
 }
 
 #profile01 .profile .profileImg {
+  position: relative;
   box-sizing: border-box;
   border-radius: 50%;
   border: 8px solid #00d9ff;
   margin-bottom: 10px;
+  transition: all 0.8s;
 }
 
 #profile01 .profile .profileImg img {
   display: block;
+}
+
+@keyframes profileRotate {
+  0% {
+    transform: rotateZ(0);
+    transform-origin: 48% 45%;
+  }
+  50% {
+    transform-origin: 52% 48%;
+  }
+  90% {
+    transform-origin: 50% 52%;
+  }
+  100% {
+    transform: rotateZ(360deg);
+    transform-origin: 48% 45%;
+  }
+}
+
+#profile01 .profile .profileImg::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 5px;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background: #00d9ff;
+  animation: profileRotate 2.4s linear infinite;
+}
+
+#profile01 .profile .profileImg:hover {
+  transform: scale(1.05);
 }
 
 #profile01 .profile .name {
@@ -341,11 +377,16 @@ a {
   box-sizing: border-box;
   padding-top: 10px;
   height: 150px;
-  opacity: 0.5;
+  opacity: 0.3;
+  transition: all 0.4s;
 }
 
 #profile02 .skill dl.active {
   opacity: 1;
+}
+
+#profile02 .skill dl:hover {
+  transform: scale(1.05);
 }
 
 #profile02 .skill dl img {
@@ -388,8 +429,63 @@ a {
   align-items: center;
 }
 
+@keyframes QnAOpacity {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes QnAtimer {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
 #profile03 .QnA p {
   font-size: 20px;
+  text-align: center;
+  line-height: 1.4;
+  animation-name: QnAOpacity;
+  animation-iteration-count: infinite;
+  padding-bottom: 10px;
+}
+
+#profile03 .QnA .timer {
+  display: flex;
+  align-items: flex-end;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #00d9ff;
+  overflow: hidden;
+}
+
+#profile03 .QnA .timer .percent {
+  width: 100%;
+  height: 0;
+  background: #00d9ff;
 }
 
 #portfolio01 {
@@ -414,6 +510,12 @@ a {
   display: flex;
   align-items: center;
   height: 100%;
+  opacity: 0.3;
+  transition: all 0.4s;
+}
+
+#portfolio01 .viewport .project_list .item.active {
+  opacity: 1;
 }
 
 #portfolio01 .viewport .project_list .item img {
@@ -438,6 +540,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  transition: all 0.4s;
 }
 
 #portfolio01 .viewport .project_explain .item a {
