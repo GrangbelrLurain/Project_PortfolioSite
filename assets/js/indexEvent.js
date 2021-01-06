@@ -220,15 +220,38 @@
   viewport.addEventListener('wheel', (event) => {
     event.stopPropagation();
     directY = event.deltaY;
-    projectActive();
-  }, true);
-
-  const projectActive = () => {
     if(directY > 0 && nowProject < listItems.length-1){
       nowProject++
     } else if (directY < 0 && nowProject > 0){
       nowProject--
     }
+    projectActive();
+  }, true);
+
+  viewport.addEventListener('touchstart', (event) => {
+    event.stopPropagation();
+    directY = event.changedTouches[0].clientY
+  })
+
+  viewport.addEventListener('touchend', (event) => {
+    event.stopPropagation();
+    directY = directY - event.changedTouches[0].clientY
+    if(directY > 0 && nowProject < listItems.length-1){
+      nowProject++
+    } else if (directY < 0 && nowProject > 0){
+      nowProject--
+    }
+    projectActive();
+  })
+
+  listItems.forEach((elem, index) => {
+    elem.addEventListener('click', () => {
+      nowProject = index;
+      projectActive();
+    })
+  })
+
+  const projectActive = () => {
     listItems.forEach((elem, index) => {
       elem.style.transform = `translateY(${-nowProject*projectList.clientHeight}px)`
       if(index == nowProject){
@@ -240,5 +263,39 @@
     explainItems.forEach((elem) => {
       elem.style.transform = `translateY(${-nowProject*projectList.clientHeight}px)`
     })
+  }
+
+  // STORYBOARD Active
+
+  const storyboard = viewport.querySelectorAll('.story');
+  const layer = document.querySelector('#portfolio01 .layer');
+  const iframe = layer.querySelector('iframe');
+  const layerCloseBtn = layer.querySelector('.close');
+
+  storyboard.forEach((elem) => {
+    elem.addEventListener('click', (event) => {
+      event.preventDefault();
+      pdfLink(elem);
+      layerOn();
+    })
+  })
+
+  layerCloseBtn.addEventListener('click', () => { layerOff() });
+
+  const pdfLink = (elem) => {
+    const href = elem.getAttribute('href');
+    if(href != '#'){
+      iframe.setAttribute('src', href);
+    } else {
+      iframe.setAttribute('src', '');
+    }
+  }
+
+  const layerOn = () => {
+    layer.classList.add('active');
+  }
+
+  const layerOff = () => {
+    layer.classList.remove('active');
   }
 }
