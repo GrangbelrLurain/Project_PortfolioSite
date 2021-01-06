@@ -489,6 +489,7 @@ a {
 }
 
 #portfolio01 {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -545,6 +546,60 @@ a {
 
 #portfolio01 .viewport .project_explain .item a {
   font-size: 20px;
+}
+
+#portfolio01 .layer {
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  box-sizing: border-box;
+  padding: 30px;
+  background: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes layerOn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#portfolio01 .layer.active {
+  display: block;
+  animation: layerOn 0.4s 1;
+}
+
+#portfolio01 .layer .close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: #ff4040;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+#portfolio01 .layer .close:hover {
+  transform: scale(1.05);
+}
+
+#portfolio01 .layer .close:active {
+  transform: scale(0.95);
+}
+
+#portfolio01 .layer iframe {
+  width: 100%;
+  height: 100%;
 }
 
 #portfolio02 {
