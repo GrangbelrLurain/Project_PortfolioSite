@@ -1,0 +1,59 @@
+@keyframes profileRotate {
+  0% {
+    transform: rotateZ(0);
+    transform-origin: 48% 45%;
+  }
+  50% {
+    transform-origin: 52% 48%;
+  }
+  90% {
+    transform-origin: 50% 52%;
+  }
+  100% {
+    transform: rotateZ(360deg);
+    transform-origin: 48% 45%;
+  }
+}
+
+@keyframes QnAOpacity {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes QnAtimer {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes layerOn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
