@@ -1,12 +1,44 @@
+{ // OPENING EVENT
+  const opening = document.querySelector('#opening .opening');
+  const intro = document.querySelector('#opening .intro');
+  const openingSkip = document.querySelector('#opening .opening .circle');
+  const time = 800 //ms
+
+  openingSkip.addEventListener('click', () => {
+    opening.style.transition = `opacity ${time}ms`
+    opening.style.opacity = 0;
+    setTimeout(() => {
+      opening.parentElement.removeChild(opening);
+      intro.classList.add('active');
+    }, time)
+  })
+
+  const introRemove = () => {
+    intro.classList.remove('active');
+  }
+
+  intro.addEventListener('wheel', introRemove);
+  intro.addEventListener('touchstart', introRemove);
+
+}
+
 { //ASIDE EVENT
   const aside = document.querySelector('#aside');
   const asideBtn = document.querySelector('#aside .toggleBtn');
   const contents = document.querySelector('#contents');
 
+  if(window.innerWidth <= 1280){
+    aside.classList.add('close');
+  }
+
   asideBtn.addEventListener('click', () => {
     aside.classList.toggle('close');
     contents.classList.toggle('close');
   })
+
+  const navClose = () => {
+    aside.classList.add('close');
+  }
 
  // NAV EVNET
   const mainNav = document.querySelectorAll('#aside .main > li > a');
@@ -119,6 +151,9 @@
 
   const scrollMove = () => {
     contents.style.transform = `translateY(${-nowContents*100}vh)`
+    if(window.innerWidth <= 840){
+      navClose();
+    }
   }
 
   // scroll Bar Update
@@ -284,10 +319,10 @@
 
   const pdfLink = (elem) => {
     const href = elem.getAttribute('href');
-    if(href != '#'){
-      iframe.setAttribute('src', href);
-    } else {
+    if(href == '#'){
       iframe.setAttribute('src', '');
+    } else {
+      iframe.setAttribute('src', href);
     }
   }
 
